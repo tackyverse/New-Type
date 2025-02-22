@@ -130,10 +130,10 @@ HTML = """
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram Nickname Changer</title>
+    <title>Instagram Nickname Changer By Hater</title>
 </head>
 <body>
-    <h1>Instagram Nickname Changer</h1>
+    <h1>Instagram Nickname Changer By Hater</h1>
     <form method="POST">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required><br><br>
