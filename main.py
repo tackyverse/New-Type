@@ -135,8 +135,7 @@ HTML = """
         /* General Styles */
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-            color: #333;
+            color: #fff;
             margin: 0;
             padding: 0;
             display: flex;
@@ -144,30 +143,63 @@ HTML = """
             align-items: center;
             height: 100vh;
             overflow: hidden;
+            position: relative;
+            background: #000; /* Fallback background */
+        }
+
+        /* Full-Screen Floating Rin Kashii Image */
+        .rin-kashii {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.pinimg.com/originals/eb/bd/d4/ebbdd41f8d79ea1565eab276f94f8fe3.jpg') no-repeat center center/cover;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Overlay for Faded Effect */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            z-index: 0;
+        }
+
+        /* Content Container */
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
         }
 
         h1 {
             font-size: 2.5rem;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 2s ease-in-out;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1rem;
+            opacity: 1; /* Full opacity for h1 */
         }
 
         form {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             animation: slideIn 1s ease-in-out;
-            position: relative;
-            z-index: 1;
+            opacity: 0.8; /* Reduced opacity for form */
         }
 
         label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: bold;
-            color: #555;
+            color: #fff;
+            opacity: 0.8; /* Reduced opacity for labels */
         }
 
         input[type="text"],
@@ -175,10 +207,13 @@ HTML = """
             width: 100%;
             padding: 0.75rem;
             margin-bottom: 1rem;
-            border: 2px solid #ddd;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 8px;
             font-size: 1rem;
             transition: border-color 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            opacity: 0.9; /* Slightly higher opacity for inputs */
         }
 
         input[type="text"]:focus,
@@ -196,6 +231,7 @@ HTML = """
             font-size: 1rem;
             cursor: pointer;
             transition: background 0.3s ease, transform 0.3s ease;
+            opacity: 0.9; /* Slightly higher opacity for button */
         }
 
         button:hover {
@@ -218,17 +254,6 @@ HTML = """
             to { transform: translateY(0); opacity: 1; }
         }
 
-        /* Rin Kashii Image */
-        .rin-kashii {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 300px;
-            height: auto;
-            z-index: 0;
-            animation: float 4s ease-in-out infinite;
-        }
-
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
@@ -236,10 +261,14 @@ HTML = """
     </style>
 </head>
 <body>
-    <!-- Rin Kashii Image -->
-    <img src="https://i.imgur.com/rin-kashii-sexy-pose.png" alt="Rin Kashii" class="rin-kashii">
+    <!-- Floating Rin Kashii Image -->
+    <div class="rin-kashii"></div>
 
-    <div>
+    <!-- Overlay for Faded Effect -->
+    <div class="overlay"></div>
+
+    <!-- Content -->
+    <div class="content">
         <h1>Instagram Nickname Changer By Metaloses</h1>
         <form method="POST">
             <label for="username">Username:</label>
